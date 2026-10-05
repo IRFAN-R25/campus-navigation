@@ -59,12 +59,13 @@ export default function CampusMap({
       });
 
       // Base layer
-      const initialMapUrl = mapLayer === 'satellite' ? '/assets/campus_map_2.png' : '/assets/campus_map.png';
+      const base = import.meta.env.BASE_URL || './';
+      const initialMapUrl = mapLayer === 'satellite' ? `${base}assets/campus_map_2.png` : `${base}assets/campus_map.png`;
       baseLayerRef.current = L.imageOverlay(initialMapUrl, bounds).addTo(map);
 
       // Walkways overlay layer
       if (showWalkways) {
-        walkwaysLayerRef.current = L.imageOverlay('/assets/paths.png', bounds, { opacity: 0.85 }).addTo(map);
+        walkwaysLayerRef.current = L.imageOverlay(`${base}assets/paths.png`, bounds, { opacity: 0.85 }).addTo(map);
       }
 
       map.fitBounds(bounds);
@@ -97,17 +98,19 @@ export default function CampusMap({
   // Update Base Layer when mapLayer changes (Standard <-> Satellite)
   useEffect(() => {
     if (!mapInstanceRef.current || !baseLayerRef.current) return;
-    const url = mapLayer === 'satellite' ? '/assets/campus_map_2.png' : '/assets/campus_map.png';
+    const base = import.meta.env.BASE_URL || './';
+    const url = mapLayer === 'satellite' ? `${base}assets/campus_map_2.png` : `${base}assets/campus_map.png`;
     baseLayerRef.current.setUrl(url);
   }, [mapLayer]);
 
   // Update Walkways Overlay Layer
   useEffect(() => {
     if (!mapInstanceRef.current) return;
+    const base = import.meta.env.BASE_URL || './';
 
     if (showWalkways) {
       if (!walkwaysLayerRef.current) {
-        walkwaysLayerRef.current = L.imageOverlay('/assets/paths.png', bounds, { opacity: 0.85 }).addTo(mapInstanceRef.current);
+        walkwaysLayerRef.current = L.imageOverlay(`${base}assets/paths.png`, bounds, { opacity: 0.85 }).addTo(mapInstanceRef.current);
       }
     } else {
       if (walkwaysLayerRef.current) {

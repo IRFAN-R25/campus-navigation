@@ -42,7 +42,7 @@ export default function AppHeader({
         {/* Brand */}
         <div className="flex items-center gap-2.5 shrink-0">
           <img
-            src="/assets/app_icon.png"
+            src={`${import.meta.env.BASE_URL}assets/app_icon.png`}
             alt="Campus Navigation"
             className="w-8 h-8 rounded-xl object-cover shadow-md shadow-cyan-500/20 border border-cyan-500/30"
           />

@@ -44,7 +44,7 @@ export default function OnboardingModal({ isOpen, onCompleteLogin }) {
         <div className="space-y-3">
           <div className="relative w-20 h-20 mx-auto">
             <img
-              src="/assets/app_icon.png"
+              src={`${import.meta.env.BASE_URL}assets/app_icon.png`}
               alt="Campus Navigation App Icon"
               className="w-full h-full object-cover rounded-3xl shadow-xl shadow-blue-500/20 border-2 border-blue-500/30"
             />

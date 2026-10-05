@@ -166,7 +166,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess }) {
         <div className="p-5 pb-3 text-center space-y-2 border-b border-slate-800/80 bg-gradient-to-b from-slate-800/40 to-transparent">
           <div className="relative w-16 h-16 mx-auto">
             <img
-              src="/assets/app_icon.png"
+              src={`${import.meta.env.BASE_URL}assets/app_icon.png`}
               alt="Campus Navigation"
               className="w-full h-full object-cover rounded-2xl shadow-xl shadow-cyan-500/20 border border-cyan-500/30"
             />
